@@ -10,7 +10,7 @@ const secondsValue = document.querySelector('[data-seconds]');
 let selectedDate = null;
 let timerId = null;
 
-startBtn.setAttribute('disabled', true);
+// startBtn.setAttribute('disabled', true);
 
 const options = {
   enableTime: true,
@@ -36,6 +36,8 @@ flatpickr('#datetime-picker', options);
 startBtn.addEventListener('click', onStartBtnClick);
 
 function onStartBtnClick() {
+  startBtn.setAttribute('disabled', true);
+
   //   document.querySelector('#datetime-picker').setAttribute('disabled', true);
 
   timerId = setInterval(() => {
