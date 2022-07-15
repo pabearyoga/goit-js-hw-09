@@ -36,7 +36,7 @@ flatpickr('#datetime-picker', options);
 startBtn.addEventListener('click', onStartBtnClick);
 
 function onStartBtnClick() {
-  document.querySelector('#datetime-picker').setAttribute('disabled', true);
+  //   document.querySelector('#datetime-picker').setAttribute('disabled', true);
 
   timerId = setInterval(() => {
     const timer = convertMs(selectedDate - new Date());
