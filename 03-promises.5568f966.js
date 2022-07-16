@@ -1,0 +1,2 @@
+let e=0,o=1e3;setInterval((()=>{var i,l;10!==e&&(e+=1,o+=2e3,(i=e,l=o,new Promise(((e,s)=>{setTimeout((()=>{Math.random()>.3?e({position:i,delay:l}):s({position:i,delay:l})}),o)}))).then((({position:e,delay:o})=>{console.log(`✅ Fulfilled promise ${e} in ${o}ms`)})).catch((({position:e,delay:o})=>{console.log(`❌ Rejected promise ${e} in ${o}ms`)})))}),o);
+//# sourceMappingURL=03-promises.5568f966.js.map
