@@ -9,9 +9,6 @@ const minutesValue = document.querySelector('[data-minutes]');
 const secondsValue = document.querySelector('[data-seconds]');
 let selectedDate = null;
 let timerId = null;
-
-startBtn.setAttribute('disabled', true);
-
 const options = {
   enableTime: true,
   dateFormat: 'Y-m-d H:i',
@@ -36,6 +33,7 @@ const options = {
   },
 };
 
+startBtn.setAttribute('disabled', true);
 flatpickr('#datetime-picker', options);
 
 startBtn.addEventListener('click', onStartBtnClick);
@@ -62,8 +60,8 @@ function onStartBtnClick() {
     // }
 
     const values = Object.values(timer);
-    const a = values.every(value => value === 0);
-    if (a) {
+    const timerValues = values.every(value => value === 0);
+    if (timerValues) {
       clearInterval(timerId);
     }
   }, 1000);
