@@ -10,7 +10,7 @@ const secondsValue = document.querySelector('[data-seconds]');
 let selectedDate = null;
 let timerId = null;
 
-// startBtn.setAttribute('disabled', true);
+startBtn.setAttribute('disabled', true);
 
 const options = {
   enableTime: true,
@@ -21,11 +21,16 @@ const options = {
   onClose(selectedDates) {
     selectedDate = selectedDates[0];
     if (selectedDate < options.defaultDate) {
-      //   window.alert('Please choose a date in the future');
       Notify.failure('Please choose a date in the future');
       return;
     } else {
       startBtn.removeAttribute('disabled');
+      clearInterval(timerId);
+      daysValue.textContent = '00';
+      hoursValue.textContent = '00';
+      minutesValue.textContent = '00';
+      secondsValue.textContent = '00';
+
       Notify.success('Back to the Future ⏳');
     }
   },
@@ -38,8 +43,6 @@ startBtn.addEventListener('click', onStartBtnClick);
 function onStartBtnClick() {
   startBtn.setAttribute('disabled', true);
 
-  //   document.querySelector('#datetime-picker').setAttribute('disabled', true);
-
   timerId = setInterval(() => {
     const timer = convertMs(selectedDate - new Date());
     if (selectedDate > new Date()) {
@@ -49,6 +52,8 @@ function onStartBtnClick() {
       minutesValue.textContent = addLeadingZero(minutes);
       secondsValue.textContent = addLeadingZero(seconds);
     } else {
+      clearInterval(timerId);
+      Notify.failure('Please choose a date in the future');
       return;
     }
 
@@ -60,7 +65,6 @@ function onStartBtnClick() {
     const a = values.every(value => value === 0);
     if (a) {
       clearInterval(timerId);
-      location.reload();
     }
   }, 1000);
 }
